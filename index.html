@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20-10-20 Lekki Massacre</title>
+  <style>
+    @font-face {
+      font-family: 'SyneMono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('./SyneMono-Regular.ttf') format('truetype');
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      font-family: 'SyneMono', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0 20px;
+      position: relative;
+      background: #E8E8E8;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .footer {
+      width: 100%;
+      justify-self: flex-end;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 0;
+    }
+
+    .github {
+      width: 30px;
+      height: 30px;
+      display: block;
+    }
+
+    .github img {
+      width: 100%;
+      height: 100%;
+    }
+
+    #massacreCountUp {
+      color: red;
+      font-size: 2rem;
+    }
+
+    .mainHeader {
+      cursor: pointer;
+    }
+
+    .endsars {
+      visibility: hidden;
+    }
+
+    .mainHeader:hover span {
+      /* display: inline; */
+      visibility: visible;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 class="mainHeader">
+      <span class="endsars">#EndS</span>
+      <img src="./ENDSars_2020.png" alt="EndSARS Twitter Emoji" />
+      <span class="endsars">RS</span>
+    </h1>
+  </header>
+
+  <main>
+    <p>
+      It's been <span id="massacreCountUp"></span> since the lekki massacre, we demand justice for the killings of our
+      people!
+    </p>
+
+    <p>
+      One week since Lekki Massacre and NOT ONE PERSON has been held responsible for the senseless killings of our people!
+      Nothing has happened! I'm sad all over again.
+    </p>
+  </main>
+
+  <footer class="footer">
+    <a href="https://github.com/BolajiOlajide/201020" class="github" target="_blank">
+      <img src="./GitHub-Mark-120px-plus.png" alt="github logo" />
+    </a>
+  </footer>
+
+  <script>
+    const updateTimeStamp = (timeStampContainer, estimatedMassacreEpoch) => {
+      const currentTimeEpoch = Date.now();
+      const oneDayInMs = (60 * 60 * 24 * 1000);
+
+      const difference = (currentTimeEpoch - estimatedMassacreEpoch) / oneDayInMs;
+      const dayDifference = Math.floor(difference);
+      const differenceInHours = (difference - dayDifference) * 24;
+      const hourDifference = Math.floor(differenceInHours);
+      const differenceInMinutes = (differenceInHours - hourDifference) * 60;
+      const minuteDifference = Math.floor(differenceInMinutes);
+      const differenceInSeconds = (differenceInMinutes - minuteDifference) * 60;
+      const secondsDifference = Math.floor(differenceInSeconds);
+
+      timeStampContainer.innerHTML = `${dayDifference} days ${hourDifference} hours ${minuteDifference} minutes ${secondsDifference} seconds`;
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const timeStampContainer = document.querySelector('#massacreCountUp');
+      const oneMinuteInMs = 1000;
+      const estimatedMassacreEpoch = new Date('2020-10-20T18:50:00').getTime();
+
+      const updateTimeStampArgs = [timeStampContainer, estimatedMassacreEpoch];
+      updateTimeStamp(...updateTimeStampArgs)
+
+      setInterval(() => updateTimeStamp(...updateTimeStampArgs), oneMinuteInMs);
+    });
+  </script>
+</body>
+
+</html>
