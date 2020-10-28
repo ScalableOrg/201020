@@ -1,0 +1,21 @@
+Naaa.
+
+Imagine that every minute on the website represents the day, 20/10/20
+
+If the shooting started at 7pm, and ended at 11pm, that's 4 hours of shooting.
+
+We want to display red during those hours.
+
+Remember each real-time minute, represents a whole day.
+
+So we want to get the seconds in that minute, that map to those shooting hours.
+
+So, 4h/24h is 1/6
+
+1/6 * 60 seconds is 10 seconds.
+
+So the red will show for 10 seconds every minute.
+
+But at what part of the minute does the red image show?
+
+We can calculate that
