@@ -58,11 +58,12 @@ h1, h2, h3, h4, h5, h6 {
 .header {
   background: var(--greyMode);
   width: auto;
-  font-size: 14px;
-  line-height: 12px;
-  padding: 10px 20px;
+  padding: 10px 15px;
   width: 100px;
   border-radius: 41px;
+  font-size: 14px;
+  line-height: 12px;
+  text-align: center;
 }
 
 span {
