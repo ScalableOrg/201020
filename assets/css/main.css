@@ -14,11 +14,17 @@
   src: url('../fonts/Lato-Regular.ttf') format('truetype');
 }
 
-*,
-*::before,
-*::after {
+:root {
+  --backgroundColor: #000;
+  --textColor: #9297AB;
+  --greyMode: #2E2E2E;
+  --white: #FFF;
+}
+
+*, *::before, *::after {
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
+  color: var(--textColor);
 }
 
 body {
@@ -29,11 +35,61 @@ body {
   width: 100vw;
   height: 100vh;
   margin: 0;
-  padding: 0 20px;
+  padding: 50px 21px;
   position: relative;
-  background: #E8E8E8;
+  background: var(--backgroundColor);
 }
 
-main {
+h1, h2, h3, h4, h5, h6 {
+  color: var(--white);
+}
+
+.container {
   flex: 1;
+  width: 100%;
+}
+
+.protestersImage {
+  width: 100%;
+  height: 250px;
+  border-radius: 7px;
+}
+
+.header {
+  background: var(--greyMode);
+  width: auto;
+  font-size: 14px;
+  line-height: 12px;
+  padding: 10px 20px;
+  width: 100px;
+  border-radius: 41px;
+}
+
+span {
+  line-height: 17px;
+}
+
+.endsars {
+  display: flex;
+  align-items: center;
+}
+
+.endsars h3 {
+  text-transform: uppercase;
+}
+
+.endsars img {
+  width: 23.86px;
+  height: 22px;
+  margin-left: 10px;
+}
+
+.countUp {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 17px;
 }
