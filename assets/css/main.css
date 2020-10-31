@@ -134,4 +134,12 @@ p {
   p {
     margin-top: 0;
   }
+
+  .protestersImage {
+    border-radius: 0;
+  }
+
+  body {
+    padding: 0;
+  }
 }
