@@ -63,10 +63,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .header {
   background: var(--greyMode);
-  padding: 10px 15px;
-  width: 100px;
+  padding: 8px 12px;
+  width: 80px;
   border-radius: 41px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 12px;
   text-align: center;
 }
@@ -94,17 +94,22 @@ span {
   font-size: 30px;
   line-height: 36px;
   margin: 0;
-  margin-bottom: 10px;
+  margin-bottom: 17px;
 }
 
 p {
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 28px;
 }
 
 @media (min-width:48em) {
   .container {
     flex-direction: row-reverse;
+  }
+
+  .countUp {
+    font-size: 50px;
+    line-height: 60px;
   }
 
   aside {
@@ -153,8 +158,9 @@ p {
   }
 
   .header {
-    font-size: 20px;
-    line-height: 24px;
-    width: 150px;
+    width: 120px;
+    padding: 10px 19px;
+    font-size: 16px;
+    line-height: 19px;
   }
 }
