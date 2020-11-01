@@ -56,42 +56,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .protestersImage {
   width: 100%;
-  height: 250px;
+  height: 300px;
   border-radius: 7px;
-  position: relative;
-}
-
-/* .protestersImage::before {
-  content: 'Amnesia';
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: red;
-  width: 100%;
-  height: 100%;
-  background-color: rebeccapurple;
-} */
-
-.protestersImage:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  transition: all 0.8s;
-  opacity: 0;
-  background: url(http://lorempixel.com/300/200);
-  background-size: 100% 100%;
-}
-
-.protestersImage:hover:before {
-  opacity: 0.8;
+  filter: grayscale(100%);
 }
 
 .header {
   background: var(--greyMode);
-  width: auto;
   padding: 10px 15px;
   width: 100px;
   border-radius: 41px;
@@ -179,5 +150,11 @@ p {
 
   body {
     padding: 0;
+  }
+
+  .header {
+    font-size: 20px;
+    line-height: 24px;
+    width: 150px;
   }
 }
