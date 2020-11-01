@@ -56,7 +56,7 @@
     <main>
       <h1 class="header">20.10.20</h1>
       <p>It's been</p>
-      <h2 class="countUp">7 days</h2>
+      <h2 class="countUp" id="massacreCountUp">7 days</h2>
       <p>
         since the lekki massacre, we demand justice for the killings of our people!
       </p>
@@ -74,31 +74,47 @@
   </section>
 
   <script>
-    const updateTimeStamp = (timeStampContainer, estimatedMassacreEpoch) => {
-      const currentTimeEpoch = Date.now();
-      const oneDayInMs = (60 * 60 * 24 * 1000);
-
-      const difference = (currentTimeEpoch - estimatedMassacreEpoch) / oneDayInMs;
-      const dayDifference = Math.floor(difference);
-      const differenceInHours = (difference - dayDifference) * 24;
-      const hourDifference = Math.floor(differenceInHours);
-      const differenceInMinutes = (differenceInHours - hourDifference) * 60;
-      const minuteDifference = Math.floor(differenceInMinutes);
-      const differenceInSeconds = (differenceInMinutes - minuteDifference) * 60;
-      const secondsDifference = Math.floor(differenceInSeconds);
-
-      timeStampContainer.innerHTML = `${dayDifference} days ${hourDifference} hours ${minuteDifference} minutes ${secondsDifference} seconds`;
-    };
-
     window.addEventListener('DOMContentLoaded', () => {
       const timeStampContainer = document.querySelector('#massacreCountUp');
-      const oneMinuteInMs = 1000;
-      const estimatedMassacreEpoch = new Date('2020-10-20T18:50:00').getTime();
+      const estimatedMassacreEpoch = new Date('2020-10-20T18:43:00').getTime();
+      const currentTimeEpoch = Date.now();
+      const oneYearInMs = 31556952000;
 
-      const updateTimeStampArgs = [timeStampContainer, estimatedMassacreEpoch];
-      updateTimeStamp(...updateTimeStampArgs)
+      const difference = (currentTimeEpoch - estimatedMassacreEpoch) / oneYearInMs;
+      const yearDifference = Math.floor(difference);
+      const differenceInMonths = (difference - yearDifference) * 12;
+      const monthDifference = Math.floor(differenceInMonths);
+      const differenceInWeeks = (differenceInMonths - monthDifference) * 4;
+      const weekDifference = Math.floor(differenceInWeeks);
+      const differenceInDays = (differenceInWeeks - weekDifference) * 7;
+      const dayDifference = Math.floor(differenceInDays)
 
-      setInterval(() => updateTimeStamp(...updateTimeStampArgs), oneMinuteInMs);
+      const dateHierachy = ['year', 'month', 'week', 'day'];
+
+      const result = [];
+
+      if (yearDifference > 0) {
+        const suffix = yearDifference > 1 ? 'years' : 'year';
+        result.push(`${yearDifference} ${suffix}`);
+      }
+
+      if (monthDifference > 0) {
+        const suffix = monthDifference > 1 ? 'months' : 'month';
+        result.push(`${monthDifference} ${suffix}`);
+      }
+
+      if (weekDifference > 0) {
+        const suffix = weekDifference > 1 ? 'weeks' : 'week';
+        result.push(`${weekDifference} ${suffix}`);
+      }
+
+      if (dayDifference > 0) {
+        const suffix = dayDifference > 1 ? 'days' : 'day';
+        result.push(`${dayDifference} ${suffix}`);
+      }
+
+      const timedifference = result.slice(0, 2).join(' ');
+      timeStampContainer.innerHTML = timedifference;
     });
   </script>
 </body>
