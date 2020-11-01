@@ -136,8 +136,13 @@ p {
     flex-direction: row-reverse;
   }
 
-  aside, aside img {
-    height: 100% !important;
+  aside {
+    width: 100%;
+    height: 100%;
+  }
+
+  aside img {
+    height: 100%;
   }
 
   main {
@@ -146,6 +151,7 @@ p {
     justify-content: center;
     height: 100%;
     padding: 0 50px;
+    width: 100%;
   }
 
   .endsars h3 {
