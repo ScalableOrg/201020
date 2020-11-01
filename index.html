@@ -49,6 +49,10 @@
 <body>
   <section class="container">
     <aside>
+      <audio id="burnasong"
+        src="https://p.scdn.co/mp3-preview/3807dbbcff963436c0f754f93d4068d1d76ecc29?cid=ada3c80106944702a933f055fbeb83b9">
+        Your browser does not support the <code>audio</code> element.
+      </audio>
       <img src="./assets/images/lekki-protest.jpeg" alt="picture of peaceful protesters at Lekki"
         class="protestersImage" loading="lazy" />
     </aside>
@@ -76,6 +80,8 @@
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       const timeStampContainer = document.querySelector('#massacreCountUp');
+      const audioPlayer = document.querySelector('#burnasong');
+
       const estimatedMassacreEpoch = new Date('2020-10-20T18:43:00').getTime();
       const currentTimeEpoch = Date.now();
       const oneYearInMs = 31556952000;
@@ -115,6 +121,7 @@
 
       const timedifference = result.slice(0, 2).join(' ');
       timeStampContainer.innerHTML = timedifference;
+      audioPlayer.play();
     });
   </script>
 </body>
