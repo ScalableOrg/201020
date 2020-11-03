@@ -130,9 +130,11 @@
     </main>
   </section>
 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VDF26E8X3H"></script>
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       const mainUrl = 'https://201020.netlify.app';
+      window.dataLayer = window.dataLayer || [];
 
       const timeStampContainer = document.querySelector('#massacreCountUp');
       const audioPlayer = document.querySelector('#burnasong');
@@ -186,6 +188,10 @@
 
       facebookShareBtn.href = encodeURI(`https://www.facebook.com/sharer/sharer.php?u=${mainUrl}&t=${shareText}`)
       twitterShareBtn.href = encodeURI(`https://twitter.com/intent/tweet?text=${shareText}&url=${mainUrl}&hashtags=EndSARS`);
+
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VDF26E8X3H');
     });
   </script>
 </body>
