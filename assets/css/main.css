@@ -102,6 +102,10 @@ p {
   line-height: 28px;
 }
 
+.share a {
+  margin-right: 20px;
+}
+
 @media (min-width:48em) {
   .container {
     flex-direction: row-reverse;
