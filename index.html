@@ -60,7 +60,7 @@
     <main>
       <h1 class="header">20.10.20</h1>
       <p>It's been</p>
-      <h2 class="countUp" id="massacreCountUp">7 days</h2>
+      <h2 class="countUp" id="massacreCountUp"></h2>
       <p>
         since the lekki massacre, we demand justice for the killings of our people!
         and NOT ONE PERSON has been held responsible for the senseless killings of our people! Nothing has happened! I'm
@@ -132,8 +132,11 @@
   </section>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-VDF26E8X3H"></script>
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+  <script src="https://unpkg.com/dayjs@1.8.21/plugin/relativeTime.js"></script>
   <script>
     window.addEventListener('DOMContentLoaded', () => {
+      dayjs.extend(window.dayjs_plugin_relativeTime);
       const mainUrl = 'https://201020.netlify.app';
       window.dataLayer = window.dataLayer || [];
 
@@ -142,119 +145,11 @@
       const twitterShareBtn = document.querySelector('#twitterLink');
       const facebookShareBtn = document.querySelector('#facebookLink');
 
-      const estimatedMassacreEpoch = new Date('2020-10-20T18:43:00').getTime();
-      const currentTimeEpoch = Date.now();
-      const oneYearInMs = 31556952000;
+      const massacreDate = '2020-10-20';
+      const timeSinceMassacre = dayjs().from(massacreDate, true);
+      timeStampContainer.innerHTML = timeSinceMassacre;
 
-      const difference = (currentTimeEpoch - estimatedMassacreEpoch);
-      const dateDifference = difference / (60 * 60 * 24 * 1000);
-
-      let timedifferenceArray = [];
-
-      const daysInMonth = 30.4167;
-      const daysInWeeks = 7;
-      const daysInYear = 365;
-
-      function calculateDateInDays(differenceInDays) {
-        let _result = [];
-        const roundedDays = Math.floor(differenceInDays);
-        const daysSuffix = roundedDays > 1 ? 'days' : 'day';
-        _result.push(`${roundedDays} ${daysSuffix}`);
-
-        return _result;
-      }
-
-      function calculateDateInWeeks(differenceInDays) {
-        let _result = [];
-        const weeksInDays = differenceInDays / daysInWeeks;
-        const roundedWeeks = Math.floor(weeksInDays);
-        const weekSuffix = roundedWeeks > 1 ? 'weeks' : 'week';
-        _result.push(`${roundedWeeks} ${weekSuffix}`);
-
-        const remainingDays = differenceInDays - (roundedWeeks * daysInWeeks);
-
-        if (Math.floor(remainingDays) > 0) {
-          const roundedDays = Math.floor(remainingDays);
-          const calculatedDays = calculateDateInDays(roundedDays);
-          _result.push(...calculatedDays);
-        }
-
-        return _result;
-      }
-
-      function calculateDateInMonths(differenceInDays) {
-        let _result = [];
-        const monthsInDays = differenceInDays / daysInMonth;
-        const roundedMonths = Math.floor(monthsInDays);
-        const monthSuffix = roundedMonths > 1 ? 'months' : 'month';
-        _result.push(`${roundedMonths} ${monthSuffix}`);
-
-        const _remainingDays = differenceInDays - (roundedMonths * daysInMonth);
-
-        if (Math.floor(_remainingDays) > 0) {
-          if (Math.floor(_remainingDays) % daysInWeeks === 0) {
-            const calculatedDateInWeeks = calculateDateInWeeks(_remainingDays);
-            _result.push(...calculatedDateInWeeks);
-          } else {
-            const calculatedDays = calculateDateInDays(_remainingDays);
-            _result.push(...calculatedDays);
-          }
-        }
-
-        return _result;
-      }
-
-      function calculateDateInYears(differenceInDays) {
-        let _result = [];
-        const yearsInDays = differenceInDays / daysInYear;
-        const roundedYears = Math.floor(yearsInDays);
-        const yearSuffix = roundedYears > 1 ? 'years' : 'year';
-        _result.push(`${roundedYears} ${yearSuffix}`);
-
-        const _remainingDays = differenceInDays - (roundedYears * daysInYear);
-
-        if (Math.floor(_remainingDays) > 0) {
-          const roundedDownRemainingDays = Math.floor(_remainingDays);
-
-          if (roundedDownRemainingDays % daysInMonth === 0) {
-            const calculatedMonthsInWeeks = calculateDateInMonths(_remainingDays);
-            _result.push(...calculatedMonthsInWeeks);
-          } else if (roundedDownRemainingDays % daysInWeeks === 0) {
-            const calculatedDateInWeeks = calculateDateInWeeks(_remainingDays);
-            _result.push(...calculatedDateInWeeks);
-          } else {
-            const calculatedDays = calculateDateInDays(_remainingDays);
-            _result.push(...calculatedDays);
-          }
-        }
-
-        return _result;
-      }
-
-      if (dateDifference < daysInWeeks) {
-        // apply in days
-        const calculatedDays = calculateDateInDays(dateDifference)
-        timedifferenceArray.push(...calculatedDays);
-      } else if (dateDifference < daysInMonth) {
-        const calculatedDateInWeeks = calculateDateInWeeks(dateDifference)
-        timedifferenceArray.push(...calculatedDateInWeeks);
-      } else if (dateDifference < daysInYear) {
-        // apply in months
-        const calculatedDateInMonths = calculateDateInMonths(dateDifference)
-        timedifferenceArray.push(...calculatedDateInMonths);
-      } else {
-        // apply in years
-        const calculatedDateInYears = calculateDateInYears(dateDifference)
-        timedifferenceArray.push(...calculatedDateInYears);
-      }
-
-      timedifferenceArray = timedifferenceArray.slice(0, 2);
-      timeStampContainer.innerHTML = timedifferenceArray.join(' ');;
-
-      // audioPlayer.play();
-
-      const shareMassacreTime = timedifferenceArray.join(' and ');
-      const shareText = `It's been ${shareMassacreTime} since the Lekki massacre, we demand justice for the killings of our people!`;
+      const shareText = `It's been ${timeSinceMassacre} since the Lekki massacre, we demand justice for the killings of our people!`;
 
       facebookShareBtn.href = encodeURI(`https://www.facebook.com/sharer/sharer.php?u=${mainUrl}&t=${shareText}`)
       twitterShareBtn.href = encodeURI(`https://twitter.com/intent/tweet?text=${shareText}&url=${mainUrl}&hashtags=EndSARS`);
