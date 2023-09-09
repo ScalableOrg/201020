@@ -145,11 +145,10 @@
       const twitterShareBtn = document.querySelector('#twitterLink');
       const facebookShareBtn = document.querySelector('#facebookLink');
 
-      const massacreDate = '2020-10-20';
-      const timeSinceMassacre = dayjs().from(massacreDate, true);
-      timeStampContainer.innerHTML = timeSinceMassacre;
+      const timeSinceMassacre = dayjs().from('2020-10-20', true);
+      timeStampContainer.innerHTML = `over ${timeSinceMassacre}`;
 
-      const shareText = `It's been ${timeSinceMassacre} since the Lekki massacre, we demand justice for the killings of our people!`;
+      const shareText = `It's been over ${timeSinceMassacre} since the Lekki massacre, we demand justice for the killings of our people!`;
 
       facebookShareBtn.href = encodeURI(`https://www.facebook.com/sharer/sharer.php?u=${mainUrl}&t=${shareText}`)
       twitterShareBtn.href = encodeURI(`https://twitter.com/intent/tweet?text=${shareText}&url=${mainUrl}&hashtags=EndSARS`);
